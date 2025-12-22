@@ -1,5 +1,3 @@
----
-
 # Desafio Técnico Backend
 
 **Objetivo:** Avaliar organização de código, domínio de TypeScript e implementação de regras de negócio.
@@ -69,5 +67,3 @@
 A data limite para submissão do link do repositório é **04/01**. Envios após essa data não serão considerados. Bom código!"
 
 **Entrega:** Link do repositório com instruções de execução no README.
-
----
