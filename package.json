@@ -1,0 +1,24 @@
+{
+  "name": "order-management-challenge",
+  "version": "1.0.0",
+  "description": "API REST para gestão de pedidos - Desafio técnico Backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest"
+  },
+  "keywords": ["nodejs", "express", "typescript", "mongodb", "api"],
+  "author": "Andrel",
+  "license": "ISC",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpeedyxBR/order-management-challenge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SpeedyxBR/order-management-challenge/issues"
+  },
+  "homepage": "https://github.com/SpeedyxBR/order-management-challenge#readme"
+}
