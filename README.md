@@ -75,7 +75,12 @@ npm install
 ```
 
 ### 3️⃣ Configure environment variables
-Create a `.env` file in the root:
+Copy the example file and edit with your values:
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your MongoDB connection string:
 ```env
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/order-management
