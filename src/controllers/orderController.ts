@@ -68,3 +68,44 @@ export const getOrders = async (req: AuthRequest, res: Response): Promise<void> 
     res.status(500).json({ error: 'Erro ao buscar pedidos' });
   }
 };
+
+const STATE_FLOW: Record<string, string | null> = {
+  CREATED: 'ANALYSIS',
+  ANALYSIS: 'COMPLETED',
+  COMPLETED: null,
+};
+
+export const advanceOrder = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const order = await Order.findById(id);
+
+    if (!order) {
+      res.status(404).json({ error: 'Pedido não encontrado' });
+      return;
+    }
+
+    if (order.status === 'DELETED') {
+      res.status(400).json({ error: 'Pedido deletado não pode ser avançado' });
+      return;
+    }
+
+    const nextState = STATE_FLOW[order.state];
+
+    if (!nextState) {
+      res.status(400).json({ error: 'Pedido já está no estado final (COMPLETED)' });
+      return;
+    }
+
+    order.state = nextState as 'CREATED' | 'ANALYSIS' | 'COMPLETED';
+    await order.save();
+
+    res.json({
+      message: `Pedido avançado para ${nextState}`,
+      order,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao avançar pedido' });
+  }
+};
