@@ -2,6 +2,7 @@ import express from 'express';
 import { config } from './config';
 import { connectDatabase } from './config/database';
 import authRoutes from './routes/authRoutes';
+import orderRoutes from './routes/orderRoutes';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/orders', orderRoutes);
 
 const startServer = async () => {
   await connectDatabase();
