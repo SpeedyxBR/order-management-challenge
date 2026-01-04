@@ -32,6 +32,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       user: { id: user._id, email: user.email }
     });
   } catch (error) {
+    console.error('Erro no register:', error);
     res.status(500).json({ error: 'Erro ao criar usuário' });
   }
 };
